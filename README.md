@@ -1,2 +1,2 @@
-# CNCTown
+# CnCtown
 CNCTown
