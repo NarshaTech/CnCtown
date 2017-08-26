@@ -1,1 +1,2 @@
 mysite/settings.py
+db.sqlite3

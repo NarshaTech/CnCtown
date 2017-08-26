@@ -1,0 +1,149 @@
+{% extends 'header.html' %}
+{% load staticfiles %}
+{% block content %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/activity_detail.css' %}">
+<link rel="stylesheet" type="text/css" href="../../static/css/activity_detail.css">
+
+
+<div id="total_display">
+<div id="left_display">
+<div class="detail_container">
+  <div class="outline_container">
+    <div id="title">
+      <p>
+        {{detail.title}}
+      </p>
+    </div>
+    <div class="text_description">
+        <p>
+          {{detail.gatheringLocation}}
+        </p>
+    </div>
+    <div id="hash_tag_container">
+      {% for hash_tag in hashtags %}
+        <div  id="hash_tag">
+           #{{hash_tag.hash}}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="content_container"> <!-- host and outline -->
+    <div class="host_container_sub">
+      <div id="host_name">
+        호스트 : {{host.user_id.first_name}} 님
+      </div>
+      <div class="link">
+        <a href="www.google.com">go to open chat</a>
+      </div>
+      <div class="text_description">
+        {{host.introduction}}
+      </div>
+    </div>
+  </div>
+  <div class="content_container">
+    <div class="text_description_title">
+      활동 소개
+    </div>
+    <div class="text_description">
+      {{detail.introduction}}
+    </div>
+    <div class="specific_description">
+      총 {{detail.totalTime}} 시간
+    </div>
+    <div class="specific_description">
+      {{detail.vehicle}}
+    </div>
+    <div class="specific_description">
+      {{detail.language}}
+    </div>
+  </div>
+
+  <div class="content_container"> <!-- activity-->
+    <div class="simple_introduction">
+      <!--장소  ( + "30분" activitySchedule.endhour - activitySchedule.starthour )?????-->
+    </div>
+      {% for schedule in schedules %}
+      <div class="specific_schedule">
+        <div class="text_description_title">
+          {{schedule.location}}
+        </div>
+        <img src={{schedule.url}}  /> <!--if image exist-->
+        <div class="text_description">
+          {{schedule.introduction}}
+        </div>
+      </div>
+      {% endfor %}
+      <div class="maps">
+        <!-- map-->
+        <script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
+        <script type="text/javascript" src="../scripts/map.js"></script>
+        <script async defer
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA0YyDiima_RM8NSbgLm3HwdIXfQUV9Zyo&libraries=visualization&callback=initMap">
+        </script>
+      </div>
+  </div>
+
+  <div class="link">
+    <!---->
+    There are links
+  </div>
+  <div class="review">
+    {% if reviews %}
+    {% for rv in reviews %}
+    review!!
+      <div id="user_name">
+        {{rv.user_id.first_name}} 님
+      </div>
+      <div id="review_photo">
+      <img src={{rv.user.image}} /> <!--foreignkey로 등록해야함-->
+      </div>
+      <div id="user_review">
+        {{rv.review}}
+      </div>
+    {% endfor %}
+    {% else %}
+    There is no <!-- REVIEW: -->
+    {% endif %}
+  </div>
+</div>
+</div>
+<div id="right_display">
+  <div id="photo">
+    <script type="text/javascript" src="../scripts/slideshow.js"></script>
+
+    <div class="slider" id="main-slider"><!-- outermost container element -->
+      <div class="slider-wrapper"><!-- innermost wrapper element -->
+        {% if photo %}
+    		  {% for ph in photo %}
+            <div id="location_photo"><img src={{ph.url}}  /></div>
+          {% endfor %}
+        {% endif %}
+    	</div>
+    </div>
+    <div>
+  </div>
+  <div id="price">
+    {{detail.price}}
+  </div>
+  <div id="ranking">
+    {{detail.ranking}}
+  </div>
+  <div class="sharing">
+    <!-- facebook, instagram, etc.-->
+  </div>
+  <div class="bookmark">
+    <!-- heart shaped button-->
+  </div>
+</div>
+</div>
+
+<div class="recommended_container">
+  There are recoommended activities
+</div>
+
+<div class="footer">
+  There are footer
+</div>
+{% endblock %}
