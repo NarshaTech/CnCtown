@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from . import models
+from .models import Activity, ActivitySchedule, ActivityLanguage, ActivityPicture, HashTag, ActivityReview, BookMark
 
 # Create your views here.
 def main_content(request) :
