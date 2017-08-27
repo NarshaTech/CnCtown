@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'css/hosting_sidebar.css' %}">
+	<link rel="stylesheet" href="{% static 'css/host0_1_2_3_8.css' %}">
+</head>
+<body>
+<div id="side_bar">
+    <div id="side_bar_logo">
+		<a href="mainPage.html">
+			<img id="img_side_bar_logo" src="{% static 'image/logo.png' %}" alt="로고"/>
+		</a>
+    </div>
+    <div id = "form_sort">
+        <div class="form_number">
+			<a href="host0.html">
+				<p>number1</p>
+			</a>
+        </div>
+        <div class="form_number">
+			<a href="host1.html">
+				<p>number1</p>
+			</a>
+        </div>
+        <div class="form_number_selected">
+            <p>number1</p>
+        </div>
+        <div class="form_number">
+            <p>number1</p>
+        </div>
+        <div class="form_number">
+            <p>number1</p>
+        </div>
+        <div class="form_number">
+            <p>number1</p>
+        </div>
+        <div class="form_number">
+            <p>number1</p>
+        </div>
+        <div class="form_number">
+                <p>number1</p>
+        </div>
+        <div class="form_number">
+            <p>number1</p>
+        </div>
+    </div>
+</div>
+
+<div id = "hosting_form_two">
+    <div class="host2_f_one">
+		<form action="" method="POST" class="post-form"> {% csrf_token %}		<!-- 서버에서 host3으로 연결 --->
+      <!-- language -->
+
+			<h2>언어</h2>
+			{{form.language}}
+
+			<!--</div> -->
+      <!-- category
+			<div> -->
+
+				<h2>카테고리</h2>
+				{{form.category}}
+
+			<br>
+			</br>
+
+				<button type="next" class="save btn btn-default">Save</button>
+			</a>
+
+
+
+		</form>
+    </div>
+	<div class="host2_f_two_three">
+		<h2>제목</h2>
+		<div class="host2_graph">
+
+		</div>
+	</div>
+	<div class="host2_f_two_three">
+		<div class="host2_graph">
+
+		</div>
+		<h2>제목</h2>
+		<p class="host_two_text">본문</p>
+	</div>
+</div>
+</body>
+</html>
